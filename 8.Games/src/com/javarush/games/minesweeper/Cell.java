@@ -9,22 +9,17 @@ public class Cell<T> {
         this.PosX =x;
         this.PosY =y;
     }
-    public static  boolean exsistCell(Cell cell, ArrayList<? extends Cell> cells){
-        try {
-            boolean isExist = false;
-            for(Cell c: cells) {
-                if (c.getPosX() == cell.getPosX() && c.getPosY() == cell.getPosY()) {
-                    isExist = true;
-                    break;
-                }
-            }
-            return isExist;
-        }catch (IndexOutOfBoundsException e) {
-            return  false;
+
+    @Override
+    public boolean equals(Object obj) {
+        if(null == obj) return false;
+        Cell<Cell> cell = (Cell) obj;
+        if(this.getPosX() == cell.getPosX() && this.getPosY() == cell.getPosY()){
+            return true;
+        }else {
+            return false;
         }
     }
-
-
 
     public int getPosX() {
         return PosX;

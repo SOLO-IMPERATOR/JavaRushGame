@@ -10,7 +10,7 @@ public class GameMap {
     private LVLMAP lvlMap;
     private int countBomb;
     
-    public GameMap(int w, int h, Color cell, Color value, int fs,LVLMAP lvlMap){
+    public GameMap(int w, int h, Color cell, Color value, int fs,LVLMAP lvlMap) {
         this.width = w;
         this.height = h;
         this.fontSize = fs;
@@ -19,8 +19,8 @@ public class GameMap {
         this.lvlMap = lvlMap;
         this.countBomb = CalcCountBomb(lvlMap);
     }
-    private int CalcCountBomb(LVLMAP lvlMap){
-        try {
+    private int CalcCountBomb(LVLMAP lvlMap) {
+
             switch (lvlMap){
                 case EASY -> {
                     return (width*height)/10;
@@ -32,13 +32,11 @@ public class GameMap {
                     return (width*height)/3;
                 }
                 default -> {
-                    throw new UnknowableLevelMapException();
+                    System.out.println("Ошибка! Неизвестный уровень игры, уровень игры EASY");
+                    return (width*height)/3;
                 }
             }
-        }catch (UnknowableLevelMapException e){
-            System.out.println("Ошибка! Неизвестный уровень игры, уровень игры EASY");
-            return (width*height)/3;
-        }
+
 
     }
     public Color getCellColor(){

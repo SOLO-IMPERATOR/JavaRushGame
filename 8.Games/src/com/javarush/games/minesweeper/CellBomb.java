@@ -13,7 +13,7 @@ public class CellBomb extends Cell{
 
         while (cellsWthBombs.size() < countBombs){
             CellBomb c = new CellBomb(random.nextInt(width),random.nextInt(height));
-            if(!Cell.exsistCell(c,cellsWthBombs)){
+            if(!cellsWthBombs.contains(c)){
                 cellsWthBombs.add(c);
             }
         }

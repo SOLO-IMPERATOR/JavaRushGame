@@ -14,7 +14,7 @@ public class CellWithoutBomb extends  Cell{
         for (int i=0;i<width;i++){
             for (int j=0;j<width;j++){
                 CellWithoutBomb cell = new CellWithoutBomb(i,j,CountBombAround(new Cell(i,j),cellsbombs,width,height));
-                if(!Cell.exsistCell(cell,cellsbombs)){
+                if(!cellsbombs.contains(cell)){
                     cells.add(cell);
                 }
             }
@@ -28,28 +28,28 @@ public class CellWithoutBomb extends  Cell{
 
     private static int CountBombAround(Cell cell, ArrayList<CellBomb> cellsbombs, int width, int height){
         int countBomb = 0;
-        if(Cell.exsistCell(new Cell(cell.getPosX()-1,cell.getPosY()),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX()-1,cell.getPosY()))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX()+1,cell.getPosY()),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX()+1,cell.getPosY()))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX(),cell.getPosY()-1),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX(),cell.getPosY()-1))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX(),cell.getPosY()+1),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX(),cell.getPosY()+1))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX()+1,cell.getPosY()+1),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX()+1,cell.getPosY()+1))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX()-1,cell.getPosY()+1),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX()-1,cell.getPosY()+1))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX()+1,cell.getPosY()-1),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX()+1,cell.getPosY()-1))){
             countBomb +=1;
         }
-        if(Cell.exsistCell(new Cell(cell.getPosX()-1,cell.getPosY()-1),cellsbombs)){
+        if(cellsbombs.contains(new Cell(cell.getPosX()-1,cell.getPosY()-1))){
             countBomb +=1;
         }
         return countBomb;

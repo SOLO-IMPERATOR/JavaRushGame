@@ -9,7 +9,7 @@ public class MinesweeperGame extends Game {
     
     @Override
     public void initialize(){
-        GameMap game = new GameMap(10,10,Color.YELLOW, Color.BLUE, 50, LVLMAP.EASY);
+        GameMap  game = new GameMap(10,10,Color.YELLOW, Color.BLUE, 50, LVLMAP.EASY);
         setScreenSize(game.getWidth(),game.getHeight());
         CellBomb.fillBombs(game.getWidth(),game.getHeight(),game.getCountBomb());
         CellWithoutBomb.createCells(CellBomb.getCellsWthBombs(),game.getWidth(),game.getHeight());
