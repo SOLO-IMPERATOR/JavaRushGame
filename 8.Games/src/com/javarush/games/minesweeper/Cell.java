@@ -20,6 +20,14 @@ public class Cell<T> {
             return false;
         }
     }
+    public static Cell findCellbyArray(ArrayList<? extends  Cell> arr, Cell<? extends Cell> cell){
+        for (Cell<? extends Cell> c : arr){
+            if(c.equals(cell)){
+                return c;
+            }
+        }
+        return null;
+    }
 
     public int getPosX() {
         return PosX;

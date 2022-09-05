@@ -2,24 +2,31 @@ package com.javarush.games.minesweeper;
 import com.javarush.engine.cell.*;
 
 public class GameMap {
-    private int width;
-    private int height;
-    private Color cellColor;
-    private Color valueColor;
-    private int fontSize;
-    private LVLMAP lvlMap;
-    private int countBomb;
-    
-    public GameMap(int w, int h, Color cell, Color value, int fs,LVLMAP lvlMap) {
-        this.width = w;
-        this.height = h;
-        this.fontSize = fs;
-        this.cellColor = cell;
-        this.valueColor = value;
-        this.lvlMap = lvlMap;
-        this.countBomb = CalcCountBomb(lvlMap);
+    private static  GameMap gameMap;
+    private static int width;
+    private static int height;
+    private static Color cellColor;
+    private static Color valueColor;
+    private static int fontSize;
+    private static LVLMAP lvlMap;
+    private static int countBomb;
+    private static int countFlag;
+
+    private GameMap(){
+
     }
-    private int CalcCountBomb(LVLMAP lvlMap) {
+    public static GameMap getInstance(int w, int h, Color cell, Color value, int fs,LVLMAP lvlMaps) {
+        width = w;
+        height = h;
+        fontSize = fs;
+        cellColor = cell;
+        valueColor = value;
+        lvlMap = lvlMaps;
+        countBomb = CalcCountBomb(lvlMap);
+        countFlag =  countBomb;
+        return new GameMap();
+    }
+    private static int CalcCountBomb(LVLMAP lvlMap) {
 
             switch (lvlMap){
                 case EASY -> {
@@ -39,6 +46,11 @@ public class GameMap {
 
 
     }
+
+    public int getCountFlag() {
+        return countFlag;
+    }
+
     public Color getCellColor(){
         return cellColor;
     }

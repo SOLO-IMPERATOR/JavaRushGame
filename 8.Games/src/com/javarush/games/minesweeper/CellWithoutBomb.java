@@ -3,10 +3,11 @@ package com.javarush.games.minesweeper;
 import java.util.ArrayList;
 
 public class CellWithoutBomb extends  Cell{
-    private  int cellValue = 0;
+    private  String cellValue = "";
+    private  boolean show = false;
     private static ArrayList<CellWithoutBomb> cells = new ArrayList<>();
 
-    private CellWithoutBomb(int x, int y, int value) {
+    private CellWithoutBomb(int x, int y, String value) {
         super(x, y);
         this.cellValue =value;
     }
@@ -22,11 +23,19 @@ public class CellWithoutBomb extends  Cell{
         return cells;
     }
 
+    public boolean isShow() {
+        return show;
+    }
+
+    public void setShow(boolean show) {
+        this.show = show;
+    }
+
     public static ArrayList<CellWithoutBomb> getCells() {
         return cells;
     }
 
-    private static int CountBombAround(Cell cell, ArrayList<CellBomb> cellsbombs, int width, int height){
+    private static String CountBombAround(Cell cell, ArrayList<CellBomb> cellsbombs, int width, int height){
         int countBomb = 0;
         if(cellsbombs.contains(new Cell(cell.getPosX()-1,cell.getPosY()))){
             countBomb +=1;
@@ -52,10 +61,13 @@ public class CellWithoutBomb extends  Cell{
         if(cellsbombs.contains(new Cell(cell.getPosX()-1,cell.getPosY()-1))){
             countBomb +=1;
         }
-        return countBomb;
+        if(countBomb == 0){
+            return "";
+        }
+        return String.valueOf(countBomb);
     }
 
-    public int getCellValue() {
+    public String getCellValue() {
         return cellValue;
     }
 }
